@@ -5,7 +5,7 @@ from tkinter import messagebox
 
 
 def is_decimal(string):
-    pattern = re.compile(r'^[-+]?\d+\.?(\d+)?$')
+    pattern = re.compile(r'^[-+]?(\d+)?\.?(\d+)?$')
     return bool(pattern.match(string))
 
 
@@ -14,7 +14,7 @@ def convert_temperature():
     temperature = temp_var.get()
     scale = scale_var.get()
 
-    if temperature == '':
+    if temperature == '' or temperature == '.':
         temperature = '0'
 
     if not is_decimal(temperature):
@@ -45,7 +45,6 @@ def convert_temperature():
         celsius_label.config(text=f"°C = {celsius:.2f}")
         fahrenheit_label.config(text=f"°F = {fahrenheit:.2f}")
         kelvin_label.config(text=f" K = {kelvin:.2f}")
-
 
 
 if __name__ == '__main__':
